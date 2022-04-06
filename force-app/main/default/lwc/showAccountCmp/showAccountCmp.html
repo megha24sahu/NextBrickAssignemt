@@ -1,0 +1,38 @@
+<template>
+
+    <div class="slds-box slds-theme_default">
+        <div class="scrollContainer" onscroll={handleScroll}>
+            <lightning-layout multiple-rows="true" vertical-align="end">
+                <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+                    padding="around-small">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input type="text" value={searchValue} label="Account Name"
+                                onchange={searchKeyword}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+                    padding="around-small">
+                    <lightning-button label="Search" onclick={handleSearchKeyword} variant="brand">
+                    </lightning-button>
+                    <lightning-button class="slds-p-left_medium" label="Clear" onclick={handleClear} variant="brand">
+                    </lightning-button>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection}>
+                <template for:each={accounts} for:item="acc" for:index="index">
+                    <lightning-accordion-section key={acc.Id} name={acc.Id} label={acc.Name}>
+                        <p>Type : {acc.Type}</p>
+                        <p>Phone : {acc.Phone}</p>
+                        <p>Rating : {acc.Rating}</p>
+                        <c-show-contact-list-cmp acc-id={accRecId}></c-show-contact-list-cmp>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,38 @@
+<template>
+
+    <template if:true={openModal}>
+        <section aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_small">Create Contact</h2>
+                    <lightning-icon class="slds-modal__close" icon-name="utility:close" size="small"
+                        onclick={closeModal}></lightning-icon>
+                </header>
+                <div class="slds-modal__content">
+                    <div class="slds-p-around_small">
+                        <lightning-record-edit-form object-api-name={contactObject} onsuccess={handleSuccess}
+                            onerror={handleError}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name={firstname}></lightning-input-field>
+                                    <lightning-input-field field-name={phone}></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input-field field-name={lastname}></lightning-input-field>
+                                    <lightning-input-field field-name={email}></lightning-input-field>
+                                </div>
+                            </div>
+                            <lightning-button type="submit" variant="brand" label="Submit">
+
+                            </lightning-button>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+</template>
